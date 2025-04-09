@@ -1,0 +1,14 @@
+C:\Users\EthanWilson\Git_Repos\ClassProject\bin\Debug\net9.0\ClassProject.exe
+C:\Users\EthanWilson\Git_Repos\ClassProject\bin\Debug\net9.0\ClassProject.deps.json
+C:\Users\EthanWilson\Git_Repos\ClassProject\bin\Debug\net9.0\ClassProject.runtimeconfig.json
+C:\Users\EthanWilson\Git_Repos\ClassProject\bin\Debug\net9.0\ClassProject.dll
+C:\Users\EthanWilson\Git_Repos\ClassProject\bin\Debug\net9.0\ClassProject.pdb
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ClassProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ClassProject.AssemblyInfoInputs.cache
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ClassProject.AssemblyInfo.cs
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ClassProject.csproj.CoreCompileInputs.cache
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ClassProject.dll
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\refint\ClassProject.dll
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ClassProject.pdb
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ClassProject.genruntimeconfig.cache
+C:\Users\EthanWilson\Git_Repos\ClassProject\obj\Debug\net9.0\ref\ClassProject.dll
