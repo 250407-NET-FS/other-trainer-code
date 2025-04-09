@@ -11,7 +11,7 @@ For this project, you'll create an ASP.NET Core MinimalAPI project, where the ap
 - ERD of your models and the relationships between them
 - The application should be ASP.NET Core Minimal APIapplication
 - The application should build and run
-- The application should have unit tests and at least 20% coverage (at least 5 unit tests that tests 5 different methods/functionality of your code)
+- The application should have unit tests and at least 20% coverage 
 - The application should communicate via HTTP(s) (Must have POST, GET, DELETE)
 - The application should be RESTful API
 - Have 2 or more models
