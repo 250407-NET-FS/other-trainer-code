@@ -32,7 +32,7 @@ For this project, you'll create an ASP.NET Core MinimalAPI project, where the ap
 
 - Repo setup
 - Minimal API and Xunit project setup and connected (atleast one test written)
-- Project Database setup
 - Model(s) and Repo(s) layer file structure setup
+- At least 1 endpoint tie to a model
 - README
 - ERD
