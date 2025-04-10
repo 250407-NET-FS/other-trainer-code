@@ -23,9 +23,11 @@ builder.Services.AddOpenApiDocument(config =>
 var app = builder.Build();
 
 //Adding swagger
-if(app.Environment.IsDevelopment()) {
+if (app.Environment.IsDevelopment())
+{
     app.UseOpenApi();
-    app.UseSwaggerUi(config => {
+    app.UseSwaggerUi(config =>
+    {
         config.DocumentTitle = "CarAPI";
         config.Path = "/swagger";
         config.DocumentPath = "/swagger/{documentName}/swagger.json";

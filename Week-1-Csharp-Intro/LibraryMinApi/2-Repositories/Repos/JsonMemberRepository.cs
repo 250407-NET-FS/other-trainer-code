@@ -20,8 +20,9 @@ public class JsonMemberRepository : IMemberRepository
         //Try-catch, since are using File-IO i.e., an unmanaged resource
         try
         {
-            if (!File.Exists(_filePath)){;
-                return new List<Member>(); // if the file DOESNT EXIST, then there are no members. We return an empty list.
+            if (!File.Exists(_filePath))
+            {
+                return new List<Member>(); // if the file DOESN'T EXIST, then there are no members. We return an empty list.
             }
 
             //using statement for my stream, it opens and reads the file.

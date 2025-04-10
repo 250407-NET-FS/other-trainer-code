@@ -9,5 +9,4 @@ public interface IMemberRepository
     Member AddMember(Member memberToAdd);
 
     void SaveMemberChanges(List<Member> members);
-
 }

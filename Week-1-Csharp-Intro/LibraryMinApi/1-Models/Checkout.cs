@@ -1,7 +1,7 @@
 namespace Library.Models;
 
-public class Checkout {
-    
+public class Checkout
+{
     public Guid CheckoutId { get; set; } = Guid.NewGuid();
 
     public Guid BookId { get; set; }
