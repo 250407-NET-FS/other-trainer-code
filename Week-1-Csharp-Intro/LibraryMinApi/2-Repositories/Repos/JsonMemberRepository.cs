@@ -12,7 +12,7 @@ public class JsonMemberRepository : IMemberRepository
     // Our repo, like any dependency, needs a constructor
     public JsonMemberRepository()
     {
-        _filePath = "../../4-Data-Files/members.json"; // Relative filepath to where we want/expect the json to be
+        _filePath = "./4-Data-Files/members.json"; // Relative filepath to where we want/expect the json to be
     }
 
     public List<Member> GetAllMembers()
