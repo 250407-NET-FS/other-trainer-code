@@ -4,7 +4,7 @@ public class Checkout
 {
     public Guid CheckoutId { get; set; } = Guid.NewGuid();
 
-    public Guid BookId { get; set; }
+    public string isbn { get; set; }
     public Guid MemberId { get; set; }
 
     public DateTime CheckoutDate { get; set; } = DateTime.Now;

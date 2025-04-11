@@ -3,6 +3,7 @@
 using System.Text.Json;
 using Library.Models;
 using Library.Repositories;
+using Library.Services;
 
 // Here is our builder
 var builder = WebApplication.CreateBuilder(args);
@@ -103,6 +104,37 @@ app.MapPost(
 
 //Checkout endpoints
 
+app.MapPost(
+    "/checkouts",
+    (CheckoutRequestDTO checkoutRequest) =>
+    {
+        try
+        {
+            //Some service layer method call goes here
+            Checkout checkout = CheckoutService.CheckoutBook(checkoutRequest);
+            return Results.Created(checkout);
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+);
+
+app.MapPut(
+    "/checkouts/return/{isbn}",
+    (string isbn) =>
+    {
+        try
+        {
+            //Here we will call our service layer method
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+);
 
 // Finally, this is what runs our app.
 app.Run();
