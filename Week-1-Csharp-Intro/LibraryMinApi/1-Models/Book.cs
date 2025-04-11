@@ -2,7 +2,8 @@ namespace Library.Models;
 
 public class Book
 {
-    public Guid BookId { get; set; } = Guid.NewGuid();
+    //We will use ISBN for this
+    public string Isbn { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string Author { get; set; } = string.Empty;
 

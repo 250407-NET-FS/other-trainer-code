@@ -9,8 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 //==== Dependency Injection Area ====
 builder.Services.AddSingleton<IMemberRepository, JsonMemberRepository>();
+builder.Services.AddSingleton<IBookRepository, JsonBookRepository>();
 
-//Adding swagger
+//Adding swagger to my dependencies
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApiDocument(config =>
 {
@@ -22,13 +23,13 @@ builder.Services.AddOpenApiDocument(config =>
 // Here the builder takes all of our DI and middleware stuff and creates our app.
 var app = builder.Build();
 
-//Adding swagger
+//Telling the app to use swagger, pulling it from the DI container in ASP.NET
 if (app.Environment.IsDevelopment())
 {
     app.UseOpenApi();
     app.UseSwaggerUi(config =>
     {
-        config.DocumentTitle = "CarAPI";
+        config.DocumentTitle = "LibraryAPI";
         config.Path = "/swagger";
         config.DocumentPath = "/swagger/{documentName}/swagger.json";
         config.DocExpansion = "list";
@@ -36,7 +37,36 @@ if (app.Environment.IsDevelopment())
 }
 
 //Book endpoints
+app.MapGet(
+    "/books",
+    (IBookRepository repo) =>
+    {
+        try
+        {
+            return Results.Ok(repo.GetAllBooks());
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message);
+        }
+    }
+);
 
+app.MapPost(
+    "/books",
+    (Book book, IBookRepository repo) =>
+    {
+        try
+        {
+            var createdBook = repo.AddBook(book);
+            return Results.Created($"/books/{createdBook.Isbn}", createdBook);
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem(ex.Message, statusCode: 400);
+        }
+    }
+);
 
 //Member endpoints
 app.MapGet(
