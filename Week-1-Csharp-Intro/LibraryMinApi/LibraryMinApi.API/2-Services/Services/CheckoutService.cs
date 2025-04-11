@@ -4,20 +4,20 @@ using Library.Repositories;
 
 namespace Library.Services;
 
-public class CheckoutService
+public class CheckoutService : ICheckoutService
 {
     private readonly IBookRepository _bookRepo;
 
     private readonly IMemberRepository _memberRepo;
 
-    private readonly ICheckoutRepistory _checkoutRepo;
+    private readonly ICheckoutRepository _checkoutRepo;
 
     public CheckoutService(
         IBookRepository bookRepo,
         IMemberRepository memberRepo,
         ICheckoutRepository checkoutRepo
-    ) 
-    { 
+    )
+    {
         _bookRepo = bookRepo;
         _memberRepo = memberRepo;
         _checkoutRepo = checkoutRepo;
@@ -25,7 +25,6 @@ public class CheckoutService
 
     public Checkout CheckoutBook(CheckoutRequestDTO checkoutRequest)
     {
-
         //1. Validate that a book exists
 
         // Getting our list of books from the _bookRepo
@@ -35,13 +34,13 @@ public class CheckoutService
         Book? foundBook = bookList.Find(b => b.Isbn == checkoutRequest.isbn);
 
         // If the book isnt found, this will run
-        if(foundBook is null)
+        if (foundBook is null)
         {
             throw new Exception("Book not found");
         }
 
         // If the book is found but isnt available, this will run
-        if(!foundBook.IsAvailable)
+        if (!foundBook.IsAvailable)
         {
             throw new Exception("Book is not available for checkout");
         }
@@ -54,7 +53,7 @@ public class CheckoutService
         Member? foundMember = memberList.Find(m => m.Email == checkoutRequest.memberEmail);
 
         // If the book isnt found, this will run
-        if(foundMember is null)
+        if (foundMember is null)
         {
             throw new Exception("Member not found");
         }
@@ -71,10 +70,14 @@ public class CheckoutService
         _bookRepo.UpdateBook(foundBook);
 
         //5. Save the checkout
+        List<Checkout> checkouts = _checkoutRepo.GetAllCheckouts();
 
-        _checkoutRepo.AddCheckout(checkoutToAdd);
+        // Remembering to actually add the new checkout to the list
+        checkouts.Add(checkoutToAdd);
 
+        _checkoutRepo.AddCheckout(checkouts);
 
-
+        //Finally we return a checkout to the endpoint method that called this service method
+        return checkoutToAdd;
     }
 }

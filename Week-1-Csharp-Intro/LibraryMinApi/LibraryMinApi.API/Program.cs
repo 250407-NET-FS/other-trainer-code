@@ -1,6 +1,6 @@
 //Up here, like any .cs file, we can throw in our using statements for packages or namespaces
 // that we may need
-using System.Text.Json;
+using Library.DTOs;
 using Library.Models;
 using Library.Repositories;
 using Library.Services;
@@ -9,8 +9,14 @@ using Library.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 //==== Dependency Injection Area ====
+
+//Repos
 builder.Services.AddSingleton<IMemberRepository, JsonMemberRepository>();
 builder.Services.AddSingleton<IBookRepository, JsonBookRepository>();
+builder.Services.AddSingleton<ICheckoutRepository, JsonCheckoutRepository>();
+
+//Services
+builder.Services.AddSingleton<ICheckoutService, CheckoutService>();
 
 //Adding swagger to my dependencies
 builder.Services.AddEndpointsApiExplorer();
@@ -106,13 +112,13 @@ app.MapPost(
 
 app.MapPost(
     "/checkouts",
-    (CheckoutRequestDTO checkoutRequest) =>
+    (CheckoutRequestDTO checkoutRequest, ICheckoutService service) =>
     {
         try
         {
             //Some service layer method call goes here
-            Checkout checkout = CheckoutService.CheckoutBook(checkoutRequest);
-            return Results.Created(checkout);
+            Checkout checkout = service.CheckoutBook(checkoutRequest);
+            return Results.Created($"/checkouts/{checkout.CheckoutId}", checkout);
         }
         catch (Exception ex)
         {
@@ -123,11 +129,12 @@ app.MapPost(
 
 app.MapPut(
     "/checkouts/return/{isbn}",
-    (string isbn) =>
+    (string isbn, ICheckoutService service) =>
     {
         try
         {
             //Here we will call our service layer method
+            return Results.Ok();
         }
         catch (Exception ex)
         {
