@@ -52,7 +52,7 @@ public class CheckoutService : ICheckoutService
         // Grab the book from the list (if it doesnt exist, foundBook is null)
         Member? foundMember = memberList.Find(m => m.Email == checkoutRequest.memberEmail);
 
-        // If the book isnt found, this will run
+        // If the member isnt found, this will run
         if (foundMember is null)
         {
             throw new Exception("Member not found");
