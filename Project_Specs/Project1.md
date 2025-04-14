@@ -15,7 +15,7 @@ For this project, you'll create an ASP.NET Core MinimalAPI project, where the ap
 - The application should communicate via HTTP(s) (Must have POST, GET, DELETE)
 - The application should be RESTful API
 - Have 2 or more models
-- Have atleast one many to many relationship between the two models.
+- Have atleast one many to many relationship between the models in your app.
 
 ## Stretch Goals
 
