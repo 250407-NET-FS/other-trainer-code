@@ -9,7 +9,7 @@ public class JsonCheckoutRepository : ICheckoutRepository
 
     public JsonCheckoutRepository()
     {
-        _filePath = Path.Combine("./4-Data-Files/checkouts.json");
+        _filePath = "./5-Data-Files/checkouts.json";
     }
 
     // Adding a checkout record to our Json

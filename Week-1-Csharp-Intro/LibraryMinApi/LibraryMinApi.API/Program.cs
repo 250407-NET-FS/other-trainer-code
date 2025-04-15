@@ -4,9 +4,18 @@ using Library.DTOs;
 using Library.Models;
 using Library.Repositories;
 using Library.Services;
+using Serilog;
+
+//Creating a logger in our program.cs
+Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
 
 // Here is our builder
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog();
+
+//Adding Serilog for logging
+builder.Services.AddSerilog();
 
 //==== Dependency Injection Area ====
 
@@ -29,6 +38,9 @@ builder.Services.AddOpenApiDocument(config =>
 
 // Here the builder takes all of our DI and middleware stuff and creates our app.
 var app = builder.Build();
+
+//Instructing the app to use request logging with Serilog
+app.UseSerilogRequestLogging();
 
 //Telling the app to use swagger, pulling it from the DI container in ASP.NET
 if (app.Environment.IsDevelopment())

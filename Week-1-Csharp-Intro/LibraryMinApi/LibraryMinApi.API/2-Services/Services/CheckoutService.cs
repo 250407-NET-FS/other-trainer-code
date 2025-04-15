@@ -11,22 +11,25 @@ public class CheckoutService : ICheckoutService
     private readonly IMemberRepository _memberRepo;
 
     private readonly ICheckoutRepository _checkoutRepo;
+    private readonly ILogger _logger;
 
     public CheckoutService(
         IBookRepository bookRepo,
         IMemberRepository memberRepo,
-        ICheckoutRepository checkoutRepo
+        ICheckoutRepository checkoutRepo,
+        ILogger logger
     )
     {
         _bookRepo = bookRepo;
         _memberRepo = memberRepo;
         _checkoutRepo = checkoutRepo;
+        _logger = logger;
     }
 
     public Checkout CheckoutBook(CheckoutRequestDTO checkoutRequest)
     {
-        //1. Validate that a book exists
-
+        // //1. Validate that a book exists
+        _logger.LogCritical("THIS IS FROM CHECKOUT BOOK");
         // Getting our list of books from the _bookRepo
         List<Book> bookList = _bookRepo.GetAllBooks();
 
