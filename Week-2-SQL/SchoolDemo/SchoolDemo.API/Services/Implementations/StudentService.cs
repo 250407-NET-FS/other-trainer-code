@@ -12,14 +12,13 @@ namespace SchoolDemo.Services
             _repo = repo;
         }
 
-        public Task<IEnumerable<Student>> GetAllAsync() => _repo.GetAllAsync();
+        public Task<List<Student>> GetAllAsync() => _repo.GetAllAsync();
 
         public Task<Student?> GetByIdAsync(int id) => _repo.GetByIdAsync(id);
 
         public async Task CreateAsync(Student student)
         {
             await _repo.AddAsync(student);
-            await _repo.SaveChangesAsync();
         }
     }
 }

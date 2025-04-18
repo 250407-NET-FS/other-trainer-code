@@ -8,5 +8,6 @@ namespace SchoolDemo.Repositories
         Task<Course?> GetByIdAsync(int id);
         Task AddAsync(Course course);
         Task SaveChangesAsync();
+        
     }
 }
